@@ -8,10 +8,25 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradientPrimary': "linear-gradient(to right, #FF6A00, #EE0979)",
       },
+      fontFamily: {
+        poppins: "Poppins"
+      },
+      colors: {
+        "darkest": "rgb(17, 22, 37)",
+        "purple": "rgb(52, 25, 49)",
+        "pink": "rgb(255, 17, 104)",
+        "darkPink": "rgb(215, 0, 96)",
+        "orange": "rgb(229, 64, 40)",
+        "darkYellow": "rgb(241, 141, 5)",
+        "yellow": "rgb(242, 188, 6)",
+        "green": "rgb(94, 177, 28)",
+        "darkGreen": "rgb(58, 118, 52)",
+        "lightBlue": "rgb(10, 190, 190)",
+        "blue": "rgb(0, 161, 203)",
+        "darkBlue": "rgb(17, 87, 147)"
+      }
     },
   },
   plugins: [],
