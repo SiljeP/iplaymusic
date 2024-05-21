@@ -1,7 +1,10 @@
 import Link from "next/link";
-import { IoMdSettings } from "react-icons/io";
 import { IoMdWifi } from "react-icons/io";
-import { TbActivityHeartbeat } from "react-icons/tb";
+import MaterialSymbolsSettings from "../../public/icons/symbolssettings";
+import HeartbeatIcon from "../../public/icons/heartbeaticon";
+import Microphone from "../../public/icons/microphone";
+import SoundSampler from "../../public/icons/soundsampler";
+
 
 //dark:shadow-[0px_-2px_18px_2px_#4A5568]
 
@@ -12,7 +15,21 @@ export default function FooterNav() {
                 <ul className='flex justify-evenly items-center p-3' >
                     <li>
                         <Link href="/" >
-                            <TbActivityHeartbeat className="text-3xl" />
+                            <div className="flex flex-col justify-center items-center">
+                                <HeartbeatIcon className="text-3xl" />
+                                <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">Feed</p>
+                            </div>
+
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/categories" >
+                            <div className="flex flex-col justify-center items-center">
+                                <Microphone className="text-3xl" />
+                                <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">categories</p>
+                            </div>
+
+
                         </Link>
                     </li>
                     <li>
@@ -24,7 +41,19 @@ export default function FooterNav() {
                     </li>
                     <li>
                         <Link href="/" >
-                            <IoMdSettings style={{ fill: "linear-gradient(to right, #FF6A00, #EE0979)" }} className="" />
+                            <div className="flex flex-col justify-center items-center">
+                                <SoundSampler className="text-3xl" />
+                                <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">Playlists</p>
+                            </div>
+
+                        </Link>
+                    </li>
+                    <li>
+                        <Link href="/" >
+                            <div className="flex flex-col justify-center items-center">
+                                <MaterialSymbolsSettings className="text-3xl" />
+                                <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">Settings</p>
+                            </div>
                         </Link>
                     </li>
                 </ul>
