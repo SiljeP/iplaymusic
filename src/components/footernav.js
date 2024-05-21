@@ -40,7 +40,7 @@ export default function FooterNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/" >
+                        <Link href="/playlists" >
                             <div className="flex flex-col justify-center items-center">
                                 <SoundSampler className="text-3xl" />
                                 <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">Playlists</p>
@@ -49,7 +49,7 @@ export default function FooterNav() {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/" >
+                        <Link href="/settings" >
                             <div className="flex flex-col justify-center items-center">
                                 <MaterialSymbolsSettings className="text-3xl" />
                                 <p className="text-xs uppercase text-transparent bg-clip-text bg-gradientPrimary ">Settings</p>

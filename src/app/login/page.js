@@ -1,5 +1,6 @@
 "use client"
 
+import FooterNav from "@/components/footernav";
 import Link from "next/link";
 import { AiOutlineSpotify } from "react-icons/ai";
 
@@ -17,6 +18,7 @@ export default function LogIn() {
                     </div>
                 </Link>
             </div>
+            <FooterNav />
         </>
     )
 
