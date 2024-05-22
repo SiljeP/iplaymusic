@@ -1,5 +1,8 @@
 "use client"
 
+import FooterNav from "@/components/footernav"
+import HeaderNav from "@/components/headernav"
+import Headings from "@/components/headings"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
@@ -47,16 +50,20 @@ export default function Category({ params }) {
 
     return (
         <>
-            <p>single category</p>
-            <h1>{genre}</h1>
-            {tracks.map((track) => (
-                <Link href="/" key={track.name}>
-                    <div className="p-4 rounded-lg my-2">
-                        <p className="capitalize text-black text-xl font-semibold">{track.name} by {track.artists[0].name}</p>
-                    </div>
-                </Link>
-            ))}
 
+            <article className="mx-5">
+                <HeaderNav heading="categories" />
+                <Headings heading={genre} />
+
+                {tracks.map((track) => (
+                    <Link href="/" key={track.name}>
+                        <div className="p-4 rounded-lg my-2">
+                            <p className="capitalize text-black text-xl font-semibold">{track.name} by {track.artists[0].name}</p>
+                        </div>
+                    </Link>
+                ))}
+            </article>
+            <FooterNav />
         </>
     )
 }
