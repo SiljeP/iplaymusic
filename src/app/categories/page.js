@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 export default function Categories() {
     const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID
     const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET
-    const ARTIST_ID = "2FXC3k01G6Gw61bmprjgqS"
+
 
     const [categories, setCategories] = useState([])
 

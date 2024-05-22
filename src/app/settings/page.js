@@ -10,7 +10,7 @@ export default function Settings() {
             <article className="mx-5">
                 <Headings heading="Settings" />
                 <Link href="/login">
-                    <p className="bg-black text-white m-10">Login</p>
+                    <p className="bg-[#1DB954] rounded-full px-3.5 py-3 m-auto text-white text-center w-fit">Sign in with spotify</p>
                 </Link>
             </article>
             <FooterNav />

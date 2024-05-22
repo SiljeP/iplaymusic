@@ -11,7 +11,7 @@ export default function Home() {
       <article className="mx-5">
         <Headings heading="Feed / Featured" />
         <Link href="/login">
-          <p className="bg-black text-white m-10">Login</p>
+          <p className="bg-[#1DB954] rounded-full px-3.5 py-3 m-auto text-white text-center w-fit">Sign in with Spotify</p>
         </Link>
       </article>
       <FooterNav />
