@@ -2,11 +2,13 @@ import FooterNav from "@/components/footernav";
 import HeaderNav from "@/components/headernav";
 import Headings from "@/components/headings";
 import Link from "next/link";
+import { NextUIProvider } from "@nextui-org/react";
 
 
 export default function Home() {
   return (
-    <>
+
+    <NextUIProvider>
       <HeaderNav heading="Feed" />
       <article className="mx-5">
         <Headings heading="Feed / Featured" />
@@ -15,6 +17,6 @@ export default function Home() {
         </Link>
       </article>
       <FooterNav />
-    </>
+    </NextUIProvider >
   );
 }

@@ -18,7 +18,7 @@ export default function Category({ params }) {
 
 
     const [tracks, setTracks] = useState([])
-    console.log(searchQuery)
+
 
     useEffect(function () {
         fetch("https://accounts.spotify.com/api/token", {

@@ -1,7 +1,10 @@
 "use client"
+import FooterNav from "@/components/footernav";
+import HeaderNav from "@/components/headernav";
 import Image from "next/image";
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react";
+import PlayCircle from "../../../../public/icons/playcircle";
 
 export default function Playlist({ params }) {
 
@@ -44,26 +47,34 @@ export default function Playlist({ params }) {
 
     return (
         <>
-
-            <div className="p-4 rounded-lg my-2" key={playlist.id}>
-                {playlist.images && playlist.images.length > 0 && (
-                    <Image
-                        src={playlist.images[0].url}
-                        alt={playlist.name}
-                        width={150}
-                        height={150}
-                    />
-                )}
-                <p className="capitalize text-black text-l font-semibold">{playlist.name}</p>
-                <p>{playlist.description}</p>
-            </div>
-            {/* <ul>
-        {playlist.tracks.items.map(item => (
-          <li key={item.track.id}>
-            {item.track.name} by {item.track.artists.map(artist => artist.name).join(', ')}
-          </li>
-        ))}
-      </ul> */}
+            <HeaderNav heading={playlist.name} />
+            <article className="mx-5">
+                <div className="p-4 rounded-lg my-2 m-auto text-center " key={playlist.id}>
+                    {playlist.images && playlist.images.length > 0 && (
+                        <Image
+                            src={playlist.images[0].url}
+                            alt={playlist.name}
+                            width={300}
+                            height={300}
+                            className="text-center m-auto"
+                        />
+                    )}
+                    <p className="capitalize text-black text-xl font-semibold">{playlist.name}</p>
+                    <p>{playlist.description}</p>
+                </div>
+                <ul>
+                    {playlist.tracks?.items?.map(item => (
+                        <li key={item.track.id} className="flex mt-4 items-center">
+                            <PlayCircle className="inline text-3xl" />
+                            <div className="px-4 ">
+                                <p className="font-bold text-xl">{item.track.name}</p>
+                                <p className="text-md">{item.track.artists.map(artist => artist.name).join(', ')}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </article>
+            <FooterNav />
 
 
         </>

@@ -47,21 +47,24 @@ export default function Playlists() {
     return (
         <>
             <HeaderNav heading="Playlists" />
-            <article className="mx-5">
+            <article className="mx-5 ">
                 <Headings heading="Playlists" />
-                {playlists.map((playlist) => (
-                    <Link href={"/playlist/" + playlist.id} key={playlist.id}>
-                        <div className="p-4 rounded-lg my-2">
-                            <Image
-                                src={playlist.images[0].url}
-                                alt={playlist.name}
-                                width={150}
-                                height={150}
-                                className="rounded-lg shadow-lg" />
-                            <p className="capitalize text-black text-l font-semibold">{playlist.name}</p>
+                <section className="m-auto ">
+                    {playlists.map((playlist) => (
+                        <div className="p-4 rounded-lg my-2 w-fit mx-auto " key={playlist.id}>
+                            <Link href={"/playlist/" + playlist.id} className="w-fit">
+                                <Image
+                                    src={playlist.images[0].url}
+                                    alt={playlist.name}
+                                    width={250}
+                                    height={250}
+                                    className="rounded-lg shadow-lg" />
+                                <p className="capitalize text-black text-l font-semibold text-center">{playlist.name}</p>
+
+                            </Link>
                         </div>
-                    </Link>
-                ))}
+                    ))}
+                </section>
             </article>
             <FooterNav />
         </>
