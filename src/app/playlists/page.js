@@ -2,47 +2,15 @@
 import FooterNav from "@/components/footernav";
 import HeaderNav from "@/components/headernav";
 import Headings from "@/components/headings";
+import useAxios from "@/hooks/use-axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
 
 export default function Playlists() {
-    const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
-    const CLIENT_SECRET = process.env.NEXT_PUBLIC_CLIENT_SECRET;
-
-    const [playlists, setPlaylists] = useState([]);
-
-    useEffect(function () {
-        fetch("https://accounts.spotify.com/api/token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                const AUTH = data.access_token;
-
-                fetch('https://api.spotify.com/v1/browse/featured-playlists', {
-                    method: 'GET',
-                    headers: {
-                        "Authorization": `Bearer ${AUTH}`
-                    }
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        setPlaylists(data.playlists.items);
-                        console.log(data.playlists.items);
-                    })
-                    .catch(error => console.error("Error fetching playlists:", error));
-            })
-            .catch(error => console.error("Error fetching token:", error));
-    }, [CLIENT_ID, CLIENT_SECRET]);
-
-
-
+    //fetch happening here
+    const { error, loading, data } = useAxios('https://api.spotify.com/v1/browse/featured-playlists')
+    // console.log(data && data.playlists.items)
 
     return (
         <>
@@ -50,7 +18,7 @@ export default function Playlists() {
             <article className="mx-5 ">
                 <Headings heading="Playlists" />
                 <section className="m-auto ">
-                    {playlists.map((playlist) => (
+                    {data && data.playlists.items.map((playlist) => (
                         <div className="p-4 rounded-lg my-2 w-fit mx-auto " key={playlist.id}>
                             <Link href={"/playlist/" + playlist.id} className="w-fit">
                                 <Image
