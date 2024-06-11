@@ -2,27 +2,24 @@
 import FooterNav from "@/components/footernav";
 import HeaderNav from "@/components/headernav";
 import Headings from "@/components/headings";
+import Tracks from "@/components/track";
 import Axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
-
-
 export default function Search() {
-
-    const [searchArtist, setSearchArtist] = useState([])
-    const [searchAlbum, setSearchAlbum] = useState([])
-    const [searchTrack, setSearchTrack] = useState([])
     const [accesToken, setAccesToken] = useState("")
+    const [search, setSearch] = useState([])
+    const CLIENT_SECRET = "09fe357292fe412d851bd7e6a556c9d9"
 
     useEffect(() => {
-        fetch("https://accounts.spotify.com/api/token", {
+        fetch("https:accounts.spotify.com/api/token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}`
+            body: `grant_type=client_credentials&client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&client_secret=${CLIENT_SECRET}`
         })
             .then(response => response.json())
             .then(data => {
@@ -31,8 +28,8 @@ export default function Search() {
     })
 
     async function searchHandler(event) {
-        if (event.key === 'Enter' && accesToken) {
-            const response = await Axios.get(`https://api.spotify.com/v1/search?q=${event.target.value}&type=artist,track,album&limit=5`, {
+        if (event.key === 'Enter') {
+            const response = await Axios.get(`https:api.spotify.com/v1/search?q=${event.target.value}&type=artist,track,album&limit=10`, {
                 method: 'GET',
                 headers: {
                     "Content-Type": 'application/json',
@@ -40,8 +37,7 @@ export default function Search() {
                 }
             })
             console.log(response.data)
-            setSearchArtist(response.data.artists.items)
-            setSearchAlbum(response.data)
+            setSearch(response.data)
 
         }
     }
@@ -55,19 +51,54 @@ export default function Search() {
                     type="search"
                     placeholder="Search"
                     onKeyDown={searchHandler}
-                    className="border border-gray-500 px-2 rounded-md w-full transition-all duration-200 focus:w-[300px]" />
+                    className="border border-gray-500 px-2 rounded-md w-full transition-all duration-200 focus:w-[400px] text-xl" />
 
                 <div>
-                    <h2>Results</h2>
-                    {searchArtist?.map((artist) => (
+                    {search.artists?.items?.length > 0 && (
                         <>
-                            <Headings heading="Artist" />
-                            <Image src={artist.images[0].url} height={150} width={150} alt={artist.name} key={artist.id} />
-                            <p>{artist.name}</p>
+                            <Headings heading="Artists" />
+                            <ul className="flex overflow-x-auto ">
+                                {search && search.artists?.items?.map((artist) => (
+                                    <li key={artist.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
+                                        <Link href={"/artist/" + artist.id} className="w-fit">
+                                            <Image src={artist.images[0].url} height={150} width={150} alt={artist.name} />
+                                            <p>{artist.name}</p>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
                         </>
-                    ))}
+
+                    )}
+                    {search.artists?.items?.length > 0 && (
+                        <>
+                            <Headings heading="Albums" />
+                            <ul className="flex overflow-x-auto ">
+                                {search && search.albums?.items?.map((albums) => (
+                                    <li key={albums.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
+                                        <Image src={albums.images[0].url} height={150} width={150} alt={albums.name} key={albums.id} />
+                                        <p>{albums.name}</p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </>
+
+                    )}
+                    {search.tracks?.items?.length > 0 && (
+                        <>
+                            <Headings heading="Songs" />
+                            <ul>
+                                {search && search.tracks?.items?.map((track) => (
+                                    <Tracks track={track} key={track.id} />
+
+                                ))}
+                            </ul>
+                        </>
+
+                    )}
+
                 </div>
-            </article>
+            </article >
             <FooterNav />
 
         </>

@@ -13,7 +13,7 @@ export default function Playlist({ params }) {
 
     //fetch happening here
     const { error, loading, data } = useAxios(`https://api.spotify.com/v1/playlists/${ID}`)
-    // console.log(data && data)
+    console.log(data && data)
 
     return (
         <>
@@ -21,7 +21,7 @@ export default function Playlist({ params }) {
             <article className="mx-5">
                 <div className="p-4 rounded-lg my-2 m-auto text-center " key={data && data.id}>
                     {loading && "loading..."}
-                    {data.images && data.images.length > 0 && (
+                    {data && data.images.length > 0 && (
                         <Image
                             src={data.images[0].url}
                             alt={data.name}
@@ -31,7 +31,7 @@ export default function Playlist({ params }) {
                         />
                     )}
                     <p className="capitalize text-black text-xl font-semibold">{data && data.name}</p>
-                    <p>{data && data.description}</p>
+                    <p dangerouslySetInnerHTML={{ __html: data && data.description }} />
                 </div>
                 <ul>
                     {data && data.tracks?.items?.map(item => (
