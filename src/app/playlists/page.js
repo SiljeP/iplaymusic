@@ -15,7 +15,7 @@ export default function Playlists() {
     return (
         <>
             <HeaderNav heading="Playlists" />
-            <article className="mx-5 ">
+            <article className="mx-5 mb-[200px]">
                 <Headings heading="Playlists" />
                 <section className="m-auto ">
                     {data && data.playlists.items.map((playlist) => (

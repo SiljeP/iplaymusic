@@ -28,7 +28,7 @@ export default function Artist({ params }) {
     return (
 
         <>
-            <HeaderNav heading="Artist" />
+            <HeaderNav heading="Artist" isTransparent={true} className="absolute " />
             <article className="">
                 {loading && "loading..."}
                 {data && data.images.length > 0 && (
@@ -37,7 +37,7 @@ export default function Artist({ params }) {
                         alt={data.name}
                         width={640}
                         height={640}
-                        className="text-center m-auto relative w-full"
+                        className="text-center m-auto relative top-0 left-0 w-full h-full z-0"
                     />
                 )}
                 <p className="text-4xl font-bold text-white absolute top-1 mx-5 mt-10 pt-2">{data && data.name}</p>
@@ -61,14 +61,16 @@ export default function Artist({ params }) {
                 </section>
 
                 {/* ALBUMS */}
-                <section className="mx-5 mt-4 mb-10">
+                <section className="mx-5 mt-4 ">
                     <p className="text-black font-bold text-xl">Albums</p>
                     {albumsloading && "loading albums..."}
-                    <ul className="flex overflow-x-auto ">
+                    <ul className="flex overflow-x-auto h-auto">
                         {albumsdata && albumsdata.items?.map((albums) => (
-                            <li key={albums.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
-                                <Image src={albums.images[0].url} height={150} width={150} alt={albums.name} key={albums.id} />
-                                <p>{albums.name}</p>
+                            <li key={albums.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 h-fit">
+                                <Link href={"/album/" + albums.id} >
+                                    <Image src={albums.images[0].url} height={150} width={150} alt={albums.name} key={albums.id} />
+                                    <p>{albums.name}</p>
+                                </Link>
                             </li>
                         ))}
                     </ul>

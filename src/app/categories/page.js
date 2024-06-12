@@ -19,7 +19,7 @@ export default function Categories() {
     return (
         <>
             <HeaderNav heading="categories" />
-            <article className="mx-5">
+            <article className="mx-5 mb-[200px]">
                 <Headings heading="categories" />
                 {loading && "loading..."}
                 {data && data.categories.items.map((category, index) => (

@@ -61,7 +61,7 @@ export default function Search() {
                                 {search && search.artists?.items?.map((artist) => (
                                     <li key={artist.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
                                         <Link href={"/artist/" + artist.id} className="w-fit">
-                                            <Image src={artist.images[0].url} height={150} width={150} alt={artist.name} />
+                                            <Image src={artist?.images[0]?.url} height={150} width={150} alt={artist.name} />
                                             <p>{artist.name}</p>
                                         </Link>
                                     </li>
@@ -76,8 +76,10 @@ export default function Search() {
                             <ul className="flex overflow-x-auto ">
                                 {search && search.albums?.items?.map((albums) => (
                                     <li key={albums.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
-                                        <Image src={albums.images[0].url} height={150} width={150} alt={albums.name} key={albums.id} />
-                                        <p>{albums.name}</p>
+                                        <Link href={"/album/" + albums.id}>
+                                            <Image src={albums.images[0].url} height={150} width={150} alt={albums.name} key={albums.id} />
+                                            <p>{albums.name}</p>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

@@ -3,6 +3,7 @@
 import FooterNav from "@/components/footernav"
 import HeaderNav from "@/components/headernav"
 import Headings from "@/components/headings"
+import Tracks from "@/components/track"
 import useAxios from "@/hooks/use-axios"
 import Link from "next/link"
 import { useParams } from "next/navigation"
@@ -17,25 +18,36 @@ export default function Category({ params }) {
 
     //fetch happening here
     const { error, loading, data } = useAxios(`https://api.spotify.com/v1/search?q=${searchQuery}&type=${searchType}&market=GB`)
-    // console.log(data && data.tracks.items)
+    console.log(data && data)
+
+    //WANT TO PUT PLAYLIST FROM CATEGORIES BUT SPOTIFYS ENDPOINT IS NOT VERY GOOD..MAYBE ONLY SEEDS?
+    // const { playlisterror, playlistloading, playlistdata } = useAxios(`https://api.spotify.com/v1/browse/categories/${genre}/playlists`)
+    // console.log(data && data)
 
 
     return (
         <>
 
-            <article className="mx-5">
+            <article className="mx-5 mb-[200px]">
                 <HeaderNav heading="categories" />
                 <Headings heading={genre} />
                 {loading && "loading..."}
+                <h2 className="font-bold text-black">Tracks</h2>
                 {data && data.tracks.items.map((track) => (
                     <Link href="/" key={track.name}>
-                        <div className="p-4 rounded-lg my-2">
-                            <p className="capitalize text-black text-xl font-semibold">{track.name} by {track.artists[0].name}</p>
-                        </div>
+                        <Tracks track={track} key={track.id} />
                     </Link>
                 ))}
                 {error && <p>{error}</p>}
+
+                {/* <section>
+                    <h2 className="font-bold text-black">Playlists</h2>
+
+
+                </section> */}
             </article>
+
+
             <FooterNav />
         </>
     )
