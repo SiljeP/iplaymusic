@@ -45,7 +45,7 @@ export default function Search() {
     return (
         <>
             <HeaderNav heading="Search" />
-            <article className="mx-5">
+            <article className="mx-5 mb-[100px]">
                 <Headings heading="Search" />
                 <input
                     type="search"
@@ -61,7 +61,12 @@ export default function Search() {
                                 {search && search.artists?.items?.map((artist) => (
                                     <li key={artist.id} className="flex-shrink-0 w-[150px] pt-2 pr-2 pb-2">
                                         <Link href={"/artist/" + artist.id} className="w-fit">
-                                            <Image src={artist?.images[0]?.url} height={150} width={150} alt={artist.name} />
+                                            <Image
+                                                src={artist?.images[0]?.url}
+                                                height={150}
+                                                width={150}
+                                                alt={artist.name}
+                                                className="contain h-[142px]" />
                                             <p>{artist.name}</p>
                                         </Link>
                                     </li>

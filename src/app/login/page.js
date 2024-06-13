@@ -16,8 +16,8 @@ export default function LogIn() {
                     + "redirect_uri=http://localhost:3000/callback&"
                     + `client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&`
                     + "show_dialog=true&"
-                    + "scopes=user-read-private user-read-email"}
-                    className="bg-[#1DB954] rounded-full px-3.5 py-3 "  >
+                    + "scope=user-read-private user-read-email user-read-playback-state user-modify-playback-state user-read-recently-played user-top-read"}
+                    className="bg-[#1DB954] rounded-full px-3.5 py-3 " >
                     <div className="flex items-center font-poppins text-white text-2xl">
                         <AiOutlineSpotify className="text-white text-6xl pr-2" />
                         <p> Sign in with Spotify</p>

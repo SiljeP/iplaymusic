@@ -29,7 +29,7 @@ export default function Artist({ params }) {
 
         <>
             <HeaderNav heading="Artist" isTransparent={true} className="absolute " />
-            <article className="">
+            <article className="max-w-full">
                 {loading && "loading..."}
                 {data && data.images.length > 0 && (
                     <Image
@@ -51,7 +51,7 @@ export default function Artist({ params }) {
                 </ul>
                 {/* SONGS */}
                 <section className="mx-5 mt-4">
-                    <p className="text-black font-bold text-xl">Top Tracks</p>
+                    <p className="text-black dark:text-white font-bold text-xl">Top Tracks</p>
                     {trackloading && "loading songs..."}
                     {trackdata && trackdata.tracks.map(track => (
                         <Tracks track={track} key={track.id} />
@@ -62,7 +62,7 @@ export default function Artist({ params }) {
 
                 {/* ALBUMS */}
                 <section className="mx-5 mt-4 ">
-                    <p className="text-black font-bold text-xl">Albums</p>
+                    <p className="text-black dark:text-white font-bold text-xl">Albums</p>
                     {albumsloading && "loading albums..."}
                     <ul className="flex overflow-x-auto h-auto">
                         {albumsdata && albumsdata.items?.map((albums) => (
@@ -79,7 +79,7 @@ export default function Artist({ params }) {
 
                 {/* RELATED ARTIST */}
                 <section className="mx-5 mt-4 mb-[60px]">
-                    <p className="text-black font-bold text-xl">Related Artists</p>
+                    <p className="text-black dark:text-white font-bold text-xl">Related Artists</p>
                     {relatedloading && "loading related..."}
                     <ul className="flex overflow-x-auto ">
                         {relateddata && relateddata.artists?.map((related) => (
@@ -90,7 +90,7 @@ export default function Artist({ params }) {
                                         height={300} width={300}
                                         alt={related.name}
                                         key={related.id}
-                                        className="rounded-full"
+                                        className="rounded-full contain h-[142px]"
                                     />
                                     <p className="font-bold text-center text-lg">{related.name}</p>
                                 </Link>

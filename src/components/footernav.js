@@ -11,7 +11,7 @@ import SoundSampler from "../../public/icons/soundsampler";
 export default function FooterNav() {
     return (
         <>
-            <nav className='fixed bottom-0 w-full pb-2 shadow-[0px_-4px_18px_3px_#00000024] bg-white '>
+            <nav className='fixed bottom-0 w-full pb-2 shadow-[0px_-4px_18px_3px_#00000024] bg-white dark:bg-darkest '>
                 <ul className='flex justify-evenly items-center p-3' >
                     <li>
                         <Link href="/" >

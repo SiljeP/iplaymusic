@@ -17,7 +17,7 @@ export default function useAxios(url) {
                 }
             })
 
-            console.log(refreshTokenCookie.data.value)
+            // console.log(refreshTokenCookie.data.value)
 
             const newTokenResponse = await axios({
                 method: "POST",
@@ -33,7 +33,7 @@ export default function useAxios(url) {
                     name: "SPOTIFY_AT"
                 }
             })
-
+            //console.log(cookie.data.value);
             const response = await axios({
                 method: "GET",
                 url,

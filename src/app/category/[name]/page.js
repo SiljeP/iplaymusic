@@ -32,7 +32,7 @@ export default function Category({ params }) {
                 <HeaderNav heading="categories" />
                 <Headings heading={genre} />
                 {loading && "loading..."}
-                <h2 className="font-bold text-black">Tracks</h2>
+                <h2 className="font-bold text-xl text-black dark:text-white">Tracks</h2>
                 {data && data.tracks.items.map((track) => (
                     <Link href="/" key={track.name}>
                         <Tracks track={track} key={track.id} />

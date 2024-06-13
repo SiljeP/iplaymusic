@@ -30,7 +30,7 @@ export default function Playlist({ params }) {
                             className="text-center m-auto"
                         />
                     )}
-                    <p className="capitalize text-black text-xl font-semibold">{data && data.name}</p>
+                    <p className="capitalize text-black dark:text-white text-xl font-semibold">{data && data.name}</p>
                     <p dangerouslySetInnerHTML={{ __html: data && data.description }} />
                 </div>
                 <ul>

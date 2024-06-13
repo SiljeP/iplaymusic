@@ -27,7 +27,7 @@ export default function Playlists() {
                                     width={250}
                                     height={250}
                                     className="rounded-lg shadow-lg" />
-                                <p className="capitalize text-black text-l font-semibold text-center">{playlist.name}</p>
+                                <p className="capitalize text-black dark:text-white text-l font-semibold text-center">{playlist.name}</p>
 
                             </Link>
                         </div>
