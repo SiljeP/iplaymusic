@@ -13,30 +13,32 @@ export default function Home() {
 
     <NextUIProvider>
       <HeaderNav heading="Feed" />
-      <article className="mx-5">
+      <article className="mx-5 w-fit-max h-[300px]">
         <Headings heading="Feed / Featured" />
 
         <section>
-          <Image
-            src={woman}
-            alt="placeholder image"
-            width={400}
-            height={400}
-            className="text-center mx-auto mb-10 " />
           <Link href="/playlists" >
-            <p className="underlined italic font-semibold">Check out the featured playlists</p>
+            <Image
+              src={woman}
+              alt="placeholder image"
+              width={400}
+              height={400}
+              className="text-center mx-auto mb-10 absolute " />
+
+            <p className="underlined text-3xl w-[300px] italic font-semibold relative top-10 left-10">Check out the featured playlists</p>
           </Link>
         </section>
 
-        <section className="mb-[200px]">
-          <Image
-            src={goldwoman}
-            alt="placeholder image"
-            width={300}
-            height={300}
-            className="text-center mx-auto " />
+        <section className="">
           <Link href="/search" >
-            <p className="underlined italic font-semibold"> Find your favourite artist</p>
+            <Image
+              src={goldwoman}
+              alt="placeholder image"
+              width={400}
+              height={400}
+              className="text-center mx-auto absolute  bottom-10 " />
+
+            <p className="underlined italic font-semibold relative top-[600px] left-9 w-[300px6] text-3xl"> Find your favourite artist</p>
           </Link>
         </section>
       </article>

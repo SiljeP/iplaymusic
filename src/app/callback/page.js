@@ -3,6 +3,9 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { useRouter } from 'next/navigation'
+import setLoginStatusCookie from "@/action/set-logincookie"
+
+
 
 export default function CallbackPage({ searchParams }) {
     const router = useRouter()
@@ -39,6 +42,7 @@ export default function CallbackPage({ searchParams }) {
     useEffect(function () {
         init()
             .finally(function () {
+                setLoginStatusCookie(true)
                 router.push("/settings")
             })
     }, [])
